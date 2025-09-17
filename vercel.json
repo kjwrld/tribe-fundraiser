@@ -1,16 +1,10 @@
 {
-  "functions": {
-    "server.js": {
-      "runtime": "@vercel/node"
-    }
-  },
+  "buildCommand": "npm run build",
+  "outputDirectory": "build",
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/server.js"
+      "dest": "/api/server.js"
     }
-  ],
-  "env": {
-    "STRIPE_SECRET_KEY": "@stripe_secret_key"
-  }
+  ]
 }

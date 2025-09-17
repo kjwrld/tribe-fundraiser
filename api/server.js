@@ -6,8 +6,40 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://tribe-fundraiser-2hhlpadgf-k-os-theory.vercel.app',
+    'https://tribe-fundraiser.vercel.app',
+    'http://localhost:3000',
+    'http://localhost:5173'
+  ],
+  credentials: true
+}));
 app.use(express.json());
+
+// Add security headers for Stripe
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', req.headers.origin || '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, stripe-signature');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  
+  // CSP header to allow Stripe domains
+  res.setHeader('Content-Security-Policy', 
+    "default-src 'self'; " +
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://r.stripe.com; " +
+    "connect-src 'self' https://api.stripe.com https://r.stripe.com https://q.stripe.com; " +
+    "frame-src 'self' https://js.stripe.com https://hooks.stripe.com; " +
+    "img-src 'self' data: https:; " +
+    "style-src 'self' 'unsafe-inline';"
+  );
+  
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
+  next();
+});
 
 // Create checkout session endpoint
 app.post('/api/create-checkout-session', async (req, res) => {
