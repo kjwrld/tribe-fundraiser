@@ -7,12 +7,16 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(cors({
-  origin: [
-    'https://tribe-fundraiser-2hhlpadgf-k-os-theory.vercel.app',
-    'https://tribe-fundraiser.vercel.app',
-    'http://localhost:3000',
-    'http://localhost:5173'
-  ],
+  origin: function (origin, callback) {
+    // Allow any Vercel deployment URL or localhost
+    if (!origin || 
+        origin.includes('tribe-fundraiser') && origin.includes('vercel.app') ||
+        origin.includes('localhost')) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 app.use(express.json());
