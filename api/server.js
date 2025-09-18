@@ -60,8 +60,9 @@ async function addDonorToMailchimp(email, firstName = '', lastName = '', donatio
     return response;
   } catch (error) {
     console.error('Mailchimp error:', error.response?.body || error.message);
+    console.error('Full error object:', JSON.stringify(error.response?.body || error, null, 2));
     // Don't throw error - we don't want donation to fail if email fails
-    return null;
+    return { error: error.response?.body || error.message };
   }
 }
 
@@ -304,7 +305,7 @@ app.post('/api/test-mailchimp', async (req, res) => {
         email: data.email,
         tier: data.tier,
         amount: data.donationAmount,
-        success: result !== null,
+        success: result !== null && !result.error,
         result: result
       });
     }
