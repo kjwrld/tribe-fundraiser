@@ -10,7 +10,7 @@ export function GradientBackground({ currentPage = 'home' }: GradientBackgroundP
   return (
     <div 
       className="fixed inset-0 pointer-events-none overflow-hidden" 
-      style={{ zIndex: isExplorePage ? 5 : -1 }}
+      style={{ zIndex: isExplorePage ? 20 : -1 }}
     >
       {/* CSS-based floating gradients */}
       <div className="floating-gradient green slow float-up"></div>
