@@ -22,12 +22,22 @@ export default function App() {
   // Check URL on component mount to handle Stripe redirects
   useEffect(() => {
     const path = window.location.pathname;
+    const hash = window.location.hash;
     const searchParams = new URLSearchParams(window.location.search);
     
     if (path === '/success' && searchParams.get('session_id')) {
       setCurrentPage('success');
     } else if (path === '/cancel') {
       setCurrentPage('cancel');
+    } else if (hash === '#crowdfunding') {
+      setCurrentPage('crowdfunding');
+      // Scroll to pledge section after page loads
+      setTimeout(() => {
+        const pledgeSection = document.getElementById('pledge-section');
+        if (pledgeSection) {
+          pledgeSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
     }
   }, []);
 
