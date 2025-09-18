@@ -257,31 +257,31 @@ app.post('/api/test-mailchimp', async (req, res) => {
   try {
     console.log('Testing Mailchimp integration with mock data...');
     
-    // Mock data that would typically come from Stripe checkout
+    // Mock data that would typically come from Stripe checkout - using realistic emails
     const mockData = [
       {
-        email: 'test.explorer@example.com',
+        email: 'john.explorer@gmail.com',
         firstName: 'John',
         lastName: 'Doe',
         donationAmount: 200,
         tier: 'Explorer'
       },
       {
-        email: 'test.steamer@example.com', 
+        email: 'jane.steamer@gmail.com', 
         firstName: 'Jane',
         lastName: 'Smith',
         donationAmount: 600,
         tier: 'Steamer'
       },
       {
-        email: 'test.ygber@example.com',
+        email: 'bob.ygber@gmail.com',
         firstName: 'Bob',
         lastName: 'Johnson',
         donationAmount: 1000,
         tier: 'YGBer'
       },
       {
-        email: 'test.onetime@example.com',
+        email: 'alice.onetime@gmail.com',
         firstName: 'Alice',
         lastName: 'Wilson',
         donationAmount: 75,
