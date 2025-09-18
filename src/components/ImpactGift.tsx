@@ -1,7 +1,6 @@
 import { imgInterfaceCheckM, imgInterfaceCheckM1 } from "../imports/svg-quane";
 import Slider from "react-slick";
 import { useState, useRef, useCallback } from "react";
-import { DonationCheckout } from "./DonationCheckout";
 
 // Stripe Product IDs
 const STRIPE_PRODUCTS = {
@@ -15,18 +14,42 @@ export function ImpactGift() {
     // State for mobile drag-to-increment interaction
     const [dragValue, setDragValue] = useState(25);
     const [donationError, setDonationError] = useState<string | null>(null);
-    const { handleDonation, isLoading } = DonationCheckout({
-        amount: dragValue,
-        isRecurring: false,
-        description: 'YGBVerse One-time Donation',
-        onSuccess: () => {
-            console.log('Donation successful!');
-            setDonationError(null);
-        },
-        onError: (error) => {
-            setDonationError(error);
+    const [isLoading, setIsLoading] = useState(false);
+
+    // Handle one-time gift donation
+    const handleDonation = async () => {
+        setIsLoading(true);
+        setDonationError(null);
+        
+        try {
+            const response = await fetch(`/api/create-checkout-session`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    productId: STRIPE_PRODUCTS.ONE_TIME_GIFT,
+                    amount: dragValue
+                }),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Failed to create checkout session');
+            }
+
+            const { url } = await response.json();
+            
+            if (url) {
+                window.location.href = url;
+            }
+        } catch (error) {
+            console.error('Donation error:', error);
+            setDonationError(error instanceof Error ? error.message : 'Failed to process donation');
+        } finally {
+            setIsLoading(false);
         }
-    });
+    };
 
     // Handler for tier subscription buttons  
     const handleTierSubscription = async (tierName: string, productId: string) => {

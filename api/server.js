@@ -124,23 +124,43 @@ app.post('/api/create-checkout-session', async (req, res) => {
     if (productId) {
       console.log(`Creating checkout for product ${productId}`);
 
-      sessionConfig = {
-        ...sessionConfig,
-        mode: 'subscription',
-        line_items: [{
-          price_data: {
-            currency: 'usd',
-            product_data: {
-              name: getProductName(productId),
+      // Handle One-Time Gift with custom amount
+      if (productId === 'prod_T4fZSmo5mQHFDc') {
+        const customAmount = amount || 25; // Default to $25 if no amount specified
+        sessionConfig = {
+          ...sessionConfig,
+          mode: 'payment', // One-time payment for gifts
+          line_items: [{
+            price_data: {
+              currency: 'usd',
+              product_data: {
+                name: getProductName(productId),
+              },
+              unit_amount: customAmount * 100, // Convert to cents
             },
-            recurring: {
-              interval: 'year',
+            quantity: 1,
+          }],
+        };
+      } else {
+        // Handle subscription products with fixed pricing
+        sessionConfig = {
+          ...sessionConfig,
+          mode: 'subscription',
+          line_items: [{
+            price_data: {
+              currency: 'usd',
+              product_data: {
+                name: getProductName(productId),
+              },
+              recurring: {
+                interval: 'year',
+              },
+              unit_amount: getProductAmount(productId),
             },
-            unit_amount: getProductAmount(productId),
-          },
-          quantity: 1,
-        }],
-      };
+            quantity: 1,
+          }],
+        };
+      }
     } else if (isRecurring) {
       // Create recurring subscription with custom amount
       sessionConfig = {
