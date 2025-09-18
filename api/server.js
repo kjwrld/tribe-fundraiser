@@ -251,7 +251,7 @@ app.post('/api/verify-payment', async (req, res) => {
   }
 });
 
-// Test endpoint for Mailchimp integration
+// Test endpoint for Mailchimp integration - with env vars
 app.post('/api/test-mailchimp', async (req, res) => {
   try {
     console.log('Testing Mailchimp integration with mock data...');
