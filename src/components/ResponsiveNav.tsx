@@ -35,10 +35,9 @@ export function ResponsiveNav({
 
     return (
         <nav
-            className={`sticky top-0 z-[100] border-b shadow-lg relative backdrop-blur-md transition-all duration-500 ease-in-out ${
+            className={`sticky top-0 z-[100] border-b shadow-lg relative backdrop-blur-md ${
                 isExplorePage
-                    ? "bg-white/10 border-white/20 shadow-black/40"
-                    // ? "bg-[#1E002B] border-purple-800 shadow-purple-900/20" // Original styling - commented out
+                    ? "bg-[#1E002B] border-purple-800 shadow-purple-900/20"
                     : "bg-white/90 border-gray-100 shadow-black/5"
             }`}
             style={{ minHeight: "80px" }}
