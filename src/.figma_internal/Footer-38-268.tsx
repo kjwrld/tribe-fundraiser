@@ -1,7 +1,7 @@
-import imgFrame61797 from "figma:asset/92f4b2e348bd6ec795814df23aabd3730268f0c5.png";
-import imgImage16 from "figma:asset/71ecd7e320bfa4d7e3a538bd8f0f05ebec8f0386.png";
-import imgImage17 from "figma:asset/4f2c17b7c21d2e30a2058cd003398dc75c36ed86.png";
-import imgImage18 from "figma:asset/6f5928af1a06de473ac13de227ec9ec6b190f002.png";
+import imgFrame61797 from "../assets/webp/92f4b2e348bd6ec795814df23aabd3730268f0c5.webp";
+import imgImage16 from "../assets/webp/71ecd7e320bfa4d7e3a538bd8f0f05ebec8f0386.webp";
+import imgImage17 from "../assets/webp/4f2c17b7c21d2e30a2058cd003398dc75c36ed86.webp";
+import imgImage18 from "../assets/webp/6f5928af1a06de473ac13de227ec9ec6b190f002.webp";
 
 function Frame61797() {
   return <div className="bg-center bg-cover bg-no-repeat h-[42.61px] shrink-0 w-full" style={{ backgroundImage: `url('${imgFrame61797}')` }} />;

@@ -1,21 +1,21 @@
 import svgPaths from "./svg-1w3i0exvlb";
-import imgFrame61797 from "figma:asset/92f4b2e348bd6ec795814df23aabd3730268f0c5.png";
-import imgImage16 from "figma:asset/71ecd7e320bfa4d7e3a538bd8f0f05ebec8f0386.png";
-import imgImage17 from "figma:asset/4f2c17b7c21d2e30a2058cd003398dc75c36ed86.png";
-import imgImage18 from "figma:asset/6f5928af1a06de473ac13de227ec9ec6b190f002.png";
-import imgFrame61559 from "figma:asset/ce3be992f9705c8a009f4cf21949a94686798352.png";
-import imgFrame61809 from "figma:asset/baed7ac9b9e70a755a9c255734be3695069e0e61.png";
-import imgFrame61810 from "figma:asset/5b2ee8981ea79eb1ed9ffcc980c6a2b1134b0b25.png";
-import imgFrame61811 from "figma:asset/1cde20486e2e972f402549864acd756d6765c749.png";
-import imgKids from "figma:asset/3e5747f3313513a767ab01e000ba98c6ad1bfcb2.png";
-import imgFrame61819 from "figma:asset/57e5ffe5c22c959464f0f0a8a8c720c70064c23c.png";
-import imgFrame61820 from "figma:asset/415485744fdfbde394fc71d336bec39854081ff0.png";
-import imgFrameworkInformationalPageHeroBadgesCoppa1 from "figma:asset/bb74394d23434184029d32edaa53519c790e46ef.png";
-import imgFrameworkInformationalPageHeroBadgesCoppa2 from "figma:asset/ab9f91aabd7ada5110df2238e6cf037397e5b530.png";
-import imgFrameworkInformationalPageHeroBadgesFerpa1 from "figma:asset/7c6115092c595a83c290cbb3f6a50e0d773e05cb.png";
-import imgRectangle2156 from "figma:asset/8d2fd097d56f012cee07134bb33d29e004f9eeff.png";
+import imgFrame61797 from "../assets/webp/92f4b2e348bd6ec795814df23aabd3730268f0c5.webp";
+import imgImage16 from "../assets/webp/71ecd7e320bfa4d7e3a538bd8f0f05ebec8f0386.webp";
+import imgImage17 from "../assets/webp/4f2c17b7c21d2e30a2058cd003398dc75c36ed86.webp";
+import imgImage18 from "../assets/webp/6f5928af1a06de473ac13de227ec9ec6b190f002.webp";
+import imgFrame61559 from "../assets/webp/ce3be992f9705c8a009f4cf21949a94686798352.webp";
+import imgFrame61809 from "../assets/webp/baed7ac9b9e70a755a9c255734be3695069e0e61.webp";
+import imgFrame61810 from "../assets/webp/5b2ee8981ea79eb1ed9ffcc980c6a2b1134b0b25.webp";
+import imgFrame61811 from "../assets/webp/1cde20486e2e972f402549864acd756d6765c749.webp";
+import imgKids from "../assets/webp/3e5747f3313513a767ab01e000ba98c6ad1bfcb2.webp";
+import imgFrame61819 from "../assets/webp/57e5ffe5c22c959464f0f0a8a8c720c70064c23c.webp";
+import imgFrame61820 from "../assets/webp/415485744fdfbde394fc71d336bec39854081ff0.webp";
+import imgFrameworkInformationalPageHeroBadgesCoppa1 from "../assets/webp/bb74394d23434184029d32edaa53519c790e46ef.webp";
+import imgFrameworkInformationalPageHeroBadgesCoppa2 from "../assets/webp/ab9f91aabd7ada5110df2238e6cf037397e5b530.webp";
+import imgFrameworkInformationalPageHeroBadgesFerpa1 from "../assets/webp/7c6115092c595a83c290cbb3f6a50e0d773e05cb.webp";
+import imgRectangle2156 from "../assets/webp/8d2fd097d56f012cee07134bb33d29e004f9eeff.webp";
 import imgYgbverseHome from "figma:asset/af10f0d1d8db3c830d824c762dcf449e3ffa03b6.png";
-import imgYgbverseHome1 from "figma:asset/0c3a39b71d5d7a0ac23fccdaef574b7ba4fe64f3.png";
+import imgYgbverseHome1 from "../assets/webp/0c3a39b71d5d7a0ac23fccdaef574b7ba4fe64f3.webp";
 
 function Frame61797() {
   return <div className="bg-center bg-cover bg-no-repeat h-[42.61px] shrink-0 w-full" style={{ backgroundImage: `url('${imgFrame61797}')` }} />;

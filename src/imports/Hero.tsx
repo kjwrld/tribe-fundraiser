@@ -1,5 +1,5 @@
 import svgPaths from "./svg-2ljn3lk1ls";
-import imgFrame61559 from "figma:asset/ce3be992f9705c8a009f4cf21949a94686798352.png";
+import imgFrame61559 from "../assets/webp/ce3be992f9705c8a009f4cf21949a94686798352.webp";
 
 function Title() {
   return (

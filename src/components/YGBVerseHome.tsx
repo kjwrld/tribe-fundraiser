@@ -1,7 +1,7 @@
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import svgPaths from "../imports/svg-h5pr0nqnbp";
 import lightningPaths from "../imports/svg-jkbx1njzf9";
-import heroImage from "figma:asset/ce3be992f9705c8a009f4cf21949a94686798352.png";
+import heroImage from "../assets/webp/ce3be992f9705c8a009f4cf21949a94686798352.webp";
 import { motion, useInView } from 'motion/react';
 import { useRef, useState, useEffect } from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";

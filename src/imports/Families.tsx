@@ -1,5 +1,5 @@
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import dashboardImage from "figma:asset/57e5ffe5c22c959464f0f0a8a8c720c70064c23c.png";
+import dashboardImage from "../assets/webp/57e5ffe5c22c959464f0f0a8a8c720c70064c23c.webp";
 
 export default function Families() {
   return (

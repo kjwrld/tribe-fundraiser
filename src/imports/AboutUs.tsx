@@ -1,17 +1,17 @@
-import imgFrame61795 from "figma:asset/3e5747f3313513a767ab01e000ba98c6ad1bfcb2.png";
-import imgFrame61794 from "figma:asset/0c3a39b71d5d7a0ac23fccdaef574b7ba4fe64f3.png";
-import imgRectangle2156 from "figma:asset/8d2fd097d56f012cee07134bb33d29e004f9eeff.png";
-import imgFrame61773 from "figma:asset/6bff8b6b7a4ebc14733dfe499b0d985dfc2bc6d8.png";
-import imgText from "figma:asset/8af2d2f5fe4a5057c6ed8ce619fa29f25c2bcb82.png";
-import imgFrame61830 from "figma:asset/8d7e1c688edb78bca9b57a2d903533aa53d6dd30.png";
-import imgFrame61831 from "figma:asset/559ad7fb9bdf2c2d7b46885aa42c36f383cb7930.png";
-import imgFrame61832 from "figma:asset/20d26a6ceb9c81fbf4362573dfb740c5df26e6f8.png";
-import imgFrame61833 from "figma:asset/bb0cae14fc041f20d4dd150507c37fc5306bf91f.png";
-import imgFrame61834 from "figma:asset/552aec3d7dbbe5f0abeb9efc58e4867a9bb19bc6.png";
-import imgFrame61797 from "figma:asset/92f4b2e348bd6ec795814df23aabd3730268f0c5.png";
-import imgImage16 from "figma:asset/71ecd7e320bfa4d7e3a538bd8f0f05ebec8f0386.png";
-import imgImage17 from "figma:asset/4f2c17b7c21d2e30a2058cd003398dc75c36ed86.png";
-import imgImage18 from "figma:asset/6f5928af1a06de473ac13de227ec9ec6b190f002.png";
+import imgFrame61795 from "../assets/webp/3e5747f3313513a767ab01e000ba98c6ad1bfcb2.webp";
+import imgFrame61794 from "../assets/webp/0c3a39b71d5d7a0ac23fccdaef574b7ba4fe64f3.webp";
+import imgRectangle2156 from "../assets/webp/8d2fd097d56f012cee07134bb33d29e004f9eeff.webp";
+import imgFrame61773 from "../assets/webp/6bff8b6b7a4ebc14733dfe499b0d985dfc2bc6d8.webp";
+import imgText from "../assets/webp/8af2d2f5fe4a5057c6ed8ce619fa29f25c2bcb82.webp";
+import imgFrame61830 from "../assets/webp/8d7e1c688edb78bca9b57a2d903533aa53d6dd30.webp";
+import imgFrame61831 from "../assets/webp/559ad7fb9bdf2c2d7b46885aa42c36f383cb7930.webp";
+import imgFrame61832 from "../assets/webp/20d26a6ceb9c81fbf4362573dfb740c5df26e6f8.webp";
+import imgFrame61833 from "../assets/webp/bb0cae14fc041f20d4dd150507c37fc5306bf91f.webp";
+import imgFrame61834 from "../assets/webp/552aec3d7dbbe5f0abeb9efc58e4867a9bb19bc6.webp";
+import imgFrame61797 from "../assets/webp/92f4b2e348bd6ec795814df23aabd3730268f0c5.webp";
+import imgImage16 from "../assets/webp/71ecd7e320bfa4d7e3a538bd8f0f05ebec8f0386.webp";
+import imgImage17 from "../assets/webp/4f2c17b7c21d2e30a2058cd003398dc75c36ed86.webp";
+import imgImage18 from "../assets/webp/6f5928af1a06de473ac13de227ec9ec6b190f002.webp";
 import {
     imgInterfaceLeaderboard,
     imgInterfaceBadge,

@@ -1,5 +1,5 @@
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import imgFrame61819 from "figma:asset/415485744fdfbde394fc71d336bec39854081ff0.png";
+import imgFrame61819 from "../assets/webp/415485744fdfbde394fc71d336bec39854081ff0.webp";
 
 export default function Educators() {
   return (

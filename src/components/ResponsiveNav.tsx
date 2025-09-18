@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import imgRectangle2156 from "figma:asset/8d2fd097d56f012cee07134bb33d29e004f9eeff.png";
+import imgRectangle2156 from "../assets/webp/8d2fd097d56f012cee07134bb33d29e004f9eeff.webp";
 
 interface ResponsiveNavProps {
     onNavigate?: (page: "home" | "about" | "explore" | "crowdfunding") => void;

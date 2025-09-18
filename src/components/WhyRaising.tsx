@@ -1,8 +1,8 @@
 import { Target, Users, Lightbulb, Heart } from 'lucide-react';
 import svgPaths from "../imports/svg-igbbmfl4cz";
-import imgFrame61804 from "figma:asset/869aebf4b973c7144fd76ccf95a4e2ebc49c62f3.png";
-import imgFrame61801 from "figma:asset/de4db98da767f57e68ad938e671e1f1f9800131f.png";
-import imgFrame61803 from "figma:asset/d98bc019482bbe3b68a942e5f65f1cedec40f326.png";
+import imgFrame61804 from "../assets/webp/869aebf4b973c7144fd76ccf95a4e2ebc49c62f3.webp";
+import imgFrame61801 from "../assets/webp/de4db98da767f57e68ad938e671e1f1f9800131f.webp";
+import imgFrame61803 from "../assets/webp/d98bc019482bbe3b68a942e5f65f1cedec40f326.webp";
 
 export function WhyRaising() {
   const stats = [

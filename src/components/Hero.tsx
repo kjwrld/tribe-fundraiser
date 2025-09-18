@@ -1,5 +1,5 @@
 import svgPaths from "../imports/svg-knx35mgwff";
-import imgFrame61774 from "figma:asset/24ffbe288bce42e59626a63b1da81bcb21dce94f.png";
+import imgFrame61774 from "../assets/webp/24ffbe288bce42e59626a63b1da81bcb21dce94f.webp";
 
 function InterfaceLightning() {
     return (

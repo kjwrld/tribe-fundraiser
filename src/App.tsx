@@ -11,9 +11,11 @@ import { YGBVerseHome } from './components/YGBVerseHome';
 import { StripeProvider } from './components/StripeProvider';
 import { SuccessPage } from './components/SuccessPage';
 import { CancelPage } from './components/CancelPage';
+import { LoadingScreen } from './components/LoadingScreen';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'explore' | 'crowdfunding' | 'success' | 'cancel'>('home');
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleNavigation = (page: 'home' | 'about' | 'explore' | 'crowdfunding' | 'success' | 'cancel') => {
     setCurrentPage(page);
@@ -44,6 +46,11 @@ export default function App() {
 
   return (
     <StripeProvider>
+      {/* Loading Screen */}
+      {isLoading && (
+        <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />
+      )}
+      
       <div className="min-h-screen overflow-x-hidden relative">
         {/* Shared Gradient Background for all pages */}
         <GradientBackground currentPage={currentPage} />

@@ -1,7 +1,7 @@
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import imgFrameworkInformationalPageHeroBadgesCoppa1 from "figma:asset/bb74394d23434184029d32edaa53519c790e46ef.png";
-import imgFrameworkInformationalPageHeroBadgesCoppa2 from "figma:asset/ab9f91aabd7ada5110df2238e6cf037397e5b530.png";
-import imgFrameworkInformationalPageHeroBadgesFerpa1 from "figma:asset/7c6115092c595a83c290cbb3f6a50e0d773e05cb.png";
+import imgFrameworkInformationalPageHeroBadgesCoppa1 from "../assets/webp/bb74394d23434184029d32edaa53519c790e46ef.webp";
+import imgFrameworkInformationalPageHeroBadgesCoppa2 from "../assets/webp/ab9f91aabd7ada5110df2238e6cf037397e5b530.webp";
+import imgFrameworkInformationalPageHeroBadgesFerpa1 from "../assets/webp/7c6115092c595a83c290cbb3f6a50e0d773e05cb.webp";
 
 export default function Certifications() {
   return (

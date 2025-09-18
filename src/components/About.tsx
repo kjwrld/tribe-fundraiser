@@ -1,10 +1,10 @@
-import imgFrame61773 from "figma:asset/6bff8b6b7a4ebc14733dfe499b0d985dfc2bc6d8.png";
-import imgText from "figma:asset/8af2d2f5fe4a5057c6ed8ce619fa29f25c2bcb82.png";
-import imgFrame61830 from "figma:asset/8d7e1c688edb78bca9b57a2d903533aa53d6dd30.png";
-import imgFrame61831 from "figma:asset/559ad7fb9bdf2c2d7b46885aa42c36f383cb7930.png";
-import imgFrame61832 from "figma:asset/20d26a6ceb9c81fbf4362573dfb740c5df26e6f8.png";
-import imgFrame61833 from "figma:asset/bb0cae14fc041f20d4dd150507c37fc5306bf91f.png";
-import imgFrame61834 from "figma:asset/552aec3d7dbbe5f0abeb9efc58e4867a9bb19bc6.png";
+import imgFrame61773 from "../assets/webp/6bff8b6b7a4ebc14733dfe499b0d985dfc2bc6d8.webp";
+import imgText from "../assets/webp/8af2d2f5fe4a5057c6ed8ce619fa29f25c2bcb82.webp";
+import imgFrame61830 from "../assets/webp/8d7e1c688edb78bca9b57a2d903533aa53d6dd30.webp";
+import imgFrame61831 from "../assets/webp/559ad7fb9bdf2c2d7b46885aa42c36f383cb7930.webp";
+import imgFrame61832 from "../assets/webp/20d26a6ceb9c81fbf4362573dfb740c5df26e6f8.webp";
+import imgFrame61833 from "../assets/webp/bb0cae14fc041f20d4dd150507c37fc5306bf91f.webp";
+import imgFrame61834 from "../assets/webp/552aec3d7dbbe5f0abeb9efc58e4867a9bb19bc6.webp";
 import {
     imgInterfaceLeaderboard,
     imgInterfaceBadge,
