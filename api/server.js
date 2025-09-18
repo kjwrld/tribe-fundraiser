@@ -26,6 +26,17 @@ function getProductAmount(productId) {
   return pricing[productId] || 0;
 }
 
+// Product names
+function getProductName(productId) {
+  const names = {
+    'prod_T4fZSmo5mQHFDc': 'One-Time Gift',
+    'prod_T4fXCFGEOwW0W0': 'YGBer ~ Gift Access to 120 Students 🚀',
+    'prod_T4fVODlCoYgRTd': 'Steamer ~ Gift Access to 90 Students 🎁',
+    'prod_T4fRnvkp4ItOxN': 'Explorer ~ Gift Access to 30 Students 🎁'
+  };
+  return names[productId] || 'YGBVerse Subscription';
+}
+
 // Configure Mailchimp
 mailchimp.setConfig({
   apiKey: process.env.MAILCHIMP_API_KEY,
@@ -119,7 +130,9 @@ app.post('/api/create-checkout-session', async (req, res) => {
         line_items: [{
           price_data: {
             currency: 'usd',
-            product: productId,
+            product_data: {
+              name: getProductName(productId),
+            },
             recurring: {
               interval: 'year',
             },
