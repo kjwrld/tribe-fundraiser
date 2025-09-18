@@ -5,6 +5,14 @@
     {
       "src": "/api/(.*)",
       "dest": "/api/server.js"
+    },
+    {
+      "src": "/(success|cancel)(.*)",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "$1"
     }
   ]
 }

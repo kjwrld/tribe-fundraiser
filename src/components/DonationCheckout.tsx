@@ -21,8 +21,7 @@ export function DonationCheckout({
     setIsLoading(true);
     
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || window.location.origin;
-      const response = await fetch(`${apiUrl}/api/create-checkout-session`, {
+      const response = await fetch(`/api/create-checkout-session`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -66,7 +66,10 @@ export function SuccessPage() {
 
           {/* Action Button */}
           <button
-            onClick={() => window.location.href = '/'}
+            onClick={() => {
+              window.history.pushState(null, '', '/');
+              window.location.reload();
+            }}
             className="w-full bg-gradient-to-r from-[#782acb] to-[#9333ea] hover:from-[#6b25b5] hover:to-[#7c3aed] text-white font-['Nunito:Bold',_sans-serif] font-bold text-lg py-4 px-8 rounded-xl shadow-[0_10px_30px_rgba(120,43,201,0.3)] hover:shadow-[0_15px_40px_rgba(120,43,201,0.4)] hover:scale-105 transition-all duration-300 group"
           >
             <span className="flex items-center justify-center gap-2">

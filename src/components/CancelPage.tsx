@@ -35,7 +35,10 @@ export function CancelPage() {
             If you experienced any issues, please don't hesitate to contact our support team.
           </p>
           <button
-            onClick={() => window.location.href = '/#donate'}
+            onClick={() => {
+              window.history.pushState(null, '', '/');
+              window.location.reload();
+            }}
             className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors mb-2"
           >
             Try Again
@@ -43,7 +46,10 @@ export function CancelPage() {
         </div>
 
         <button
-          onClick={() => window.location.href = '/'}
+          onClick={() => {
+            window.history.pushState(null, '', '/');
+            window.location.reload();
+          }}
           className="w-full bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 transition-colors"
         >
           Return to Home
