@@ -7,12 +7,20 @@ const mailchimp = require('@mailchimp/mailchimp_marketing');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Stripe Product IDs (safe to be public)
+// Stripe Product and Price IDs (safe to be public)
 const STRIPE_PRODUCTS = {
   ONE_TIME_GIFT: 'prod_T4fZSmo5mQHFDc',
   YGBER_120_STUDENTS: 'prod_T4fXCFGEOwW0W0',
   STEAMER_90_STUDENTS: 'prod_T4fVODlCoYgRTd',
   EXPLORER_30_STUDENTS: 'prod_T4fRnvkp4ItOxN'
+};
+
+// Hardcoded Price IDs to avoid API lookup overhead
+const STRIPE_PRICES = {
+  'prod_T4fZSmo5mQHFDc': 'price_1S8WDvKx6GpDBkqt7q2QstNW', // One-Time Gift
+  'prod_T4fXCFGEOwW0W0': 'price_1S8WCWKx6GpDBkqtupogrhwy', // YGBer ~ 120 Students - $1000/year
+  'prod_T4fVODlCoYgRTd': 'price_1S8WAiKx6GpDBkqtheiYWB1K', // Steamer ~ 90 Students - $600/year
+  'prod_T4fRnvkp4ItOxN': 'price_1S8W6sKx6GpDBkqtwjILpF1h'  // Explorer ~ 30 Students - $200/year
 };
 
 // Configure Mailchimp
@@ -100,36 +108,24 @@ app.post('/api/create-checkout-session', async (req, res) => {
     };
 
     if (productId) {
-      try {
-        // Use Stripe product - get all prices for the product from connected account
-        const prices = await stripe.prices.list({
-          product: productId,
-          active: true
-        }, {
-          stripeAccount: process.env.STRIPE_CONNECT_ACCOUNT_ID
-        });
-        
-        if (prices.data.length === 0) {
-          console.error(`No active prices found for product ${productId}`);
-          return res.status(400).json({ error: `No active prices found for product ${productId}` });
-        }
-
-        // Use the first active price
-        const priceId = prices.data[0].id;
-        console.log(`Using price ${priceId} for product ${productId}`);
-
-        sessionConfig = {
-          ...sessionConfig,
-          mode: 'subscription',
-          line_items: [{
-            price: priceId,
-            quantity: 1,
-          }],
-        };
-      } catch (error) {
-        console.error('Error retrieving product/price:', error);
-        return res.status(400).json({ error: `Failed to retrieve product: ${error.message}` });
+      // Use hardcoded price ID to avoid API lookup overhead
+      const priceId = STRIPE_PRICES[productId];
+      
+      if (!priceId) {
+        console.error(`No price ID found for product ${productId}`);
+        return res.status(400).json({ error: `No price ID found for product ${productId}` });
       }
+
+      console.log(`Using hardcoded price ${priceId} for product ${productId}`);
+
+      sessionConfig = {
+        ...sessionConfig,
+        mode: 'subscription',
+        line_items: [{
+          price: priceId,
+          quantity: 1,
+        }],
+      };
     } else if (isRecurring) {
       // Create recurring subscription with custom amount
       sessionConfig = {
