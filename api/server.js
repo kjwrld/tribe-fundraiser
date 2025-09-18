@@ -60,9 +60,8 @@ async function addDonorToMailchimp(email, firstName = '', lastName = '', donatio
     return response;
   } catch (error) {
     console.error('Mailchimp error:', error.response?.body || error.message);
-    console.error('Full error object:', JSON.stringify(error.response?.body || error, null, 2));
     // Don't throw error - we don't want donation to fail if email fails
-    return { error: error.response?.body || error.message };
+    return null;
   }
 }
 
@@ -249,87 +248,6 @@ app.post('/api/verify-payment', async (req, res) => {
   } catch (error) {
     console.error('Error verifying payment:', error);
     res.status(500).json({ error: error.message });
-  }
-});
-
-// Test endpoint for Mailchimp integration - with env vars
-app.post('/api/test-mailchimp', async (req, res) => {
-  try {
-    console.log('Testing Mailchimp integration with mock data...');
-    
-    // Mock data that would typically come from Stripe checkout - using realistic emails
-    const mockData = [
-      {
-        email: 'john.explorer@gmail.com',
-        firstName: 'John',
-        lastName: 'Doe',
-        donationAmount: 200,
-        tier: 'Explorer'
-      },
-      {
-        email: 'jane.steamer@gmail.com', 
-        firstName: 'Jane',
-        lastName: 'Smith',
-        donationAmount: 600,
-        tier: 'Steamer'
-      },
-      {
-        email: 'bob.ygber@gmail.com',
-        firstName: 'Bob',
-        lastName: 'Johnson',
-        donationAmount: 1000,
-        tier: 'YGBer'
-      },
-      {
-        email: 'alice.onetime@gmail.com',
-        firstName: 'Alice',
-        lastName: 'Wilson',
-        donationAmount: 75,
-        tier: 'One-Time Gift'
-      }
-    ];
-
-    const results = [];
-    
-    for (const data of mockData) {
-      console.log(`Testing Mailchimp for ${data.email} - ${data.tier} ($${data.donationAmount})`);
-      
-      const result = await addDonorToMailchimp(
-        data.email,
-        data.firstName,
-        data.lastName,
-        data.donationAmount
-      );
-      
-      results.push({
-        email: data.email,
-        tier: data.tier,
-        amount: data.donationAmount,
-        success: result !== null && !result.error,
-        result: result
-      });
-    }
-    
-    res.json({
-      success: true,
-      message: 'Mailchimp test completed',
-      results: results,
-      mailchimp_config: {
-        audience_id: process.env.MAILCHIMP_AUDIENCE_ID,
-        api_key_server: process.env.MAILCHIMP_API_KEY?.split('-')[1] || 'unknown'
-      }
-    });
-    
-  } catch (error) {
-    console.error('Mailchimp test error:', error);
-    res.status(500).json({ 
-      success: false, 
-      error: error.message,
-      mailchimp_config: {
-        audience_id: process.env.MAILCHIMP_AUDIENCE_ID,
-        api_key_server: process.env.MAILCHIMP_API_KEY?.split('-')[1] || 'unknown'
-      }
-    });
   }
 });
 
