@@ -1,4 +1,51 @@
-export function CancelPage() {
+import { useEffect } from 'react';
+
+interface CancelPageProps {
+  onNavigate?: (page: 'home' | 'about' | 'explore' | 'crowdfunding' | 'success' | 'cancel') => void;
+}
+
+export function CancelPage({ onNavigate }: CancelPageProps = {}) {
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const redirect = searchParams.get('redirect');
+    
+    if (redirect === 'pledge' && onNavigate) {
+      setTimeout(() => {
+        onNavigate('crowdfunding');
+        setTimeout(() => {
+          const pledgeSection = document.getElementById('pledge-section');
+          if (pledgeSection) {
+            pledgeSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      }, 2000);
+    }
+  }, [onNavigate]);
+
+  const handleTryAgain = () => {
+    if (onNavigate) {
+      onNavigate('crowdfunding');
+      setTimeout(() => {
+        const pledgeSection = document.getElementById('pledge-section');
+        if (pledgeSection) {
+          pledgeSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      window.history.pushState(null, '', '/');
+      window.location.reload();
+    }
+  };
+
+  const handleReturnHome = () => {
+    if (onNavigate) {
+      onNavigate('home');
+    } else {
+      window.history.pushState(null, '', '/');
+      window.location.reload();
+    }
+  };
+
   return (
     <div className="min-h-screen bg-red-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 text-center">
@@ -35,10 +82,7 @@ export function CancelPage() {
             If you experienced any issues, please don't hesitate to contact our support team.
           </p>
           <button
-            onClick={() => {
-              window.history.pushState(null, '', '/');
-              window.location.reload();
-            }}
+            onClick={handleTryAgain}
             className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors mb-2"
           >
             Try Again
@@ -46,10 +90,7 @@ export function CancelPage() {
         </div>
 
         <button
-          onClick={() => {
-            window.history.pushState(null, '', '/');
-            window.location.reload();
-          }}
+          onClick={handleReturnHome}
           className="w-full bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 transition-colors"
         >
           Return to Home

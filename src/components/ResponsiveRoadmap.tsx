@@ -176,9 +176,21 @@ function DesktopTimeline() {
 }
 
 // Button Component
-function LaunchButton() {
+function LaunchButton({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'explore' | 'crowdfunding' | 'success' | 'cancel') => void }) {
   return (
-    <button className="bg-[#782acb] flex gap-[8.862px] h-[54px] items-center justify-center px-[41.652px] py-[10.634px] rounded-[10.634px] shadow-[0px_40.766px_11.521px_0px_rgba(120,43,203,0),0px_26.586px_10.634px_0px_rgba(120,43,203,0.01),0px_15.066px_8.862px_0px_rgba(120,43,203,0.05),0px_6.203px_6.203px_0px_rgba(120,43,203,0.09),0px_1.772px_3.545px_0px_rgba(120,43,203,0.1)] transition-all hover:scale-105">
+    <button 
+      onClick={() => {
+        if (onNavigate) {
+          onNavigate('crowdfunding');
+          setTimeout(() => {
+            const pledgeSection = document.getElementById('pledge-section');
+            if (pledgeSection) {
+              pledgeSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 100);
+        }
+      }}
+      className="bg-[#782acb] flex gap-[8.862px] h-[54px] items-center justify-center px-[41.652px] py-[10.634px] rounded-[10.634px] shadow-[0px_40.766px_11.521px_0px_rgba(120,43,203,0),0px_26.586px_10.634px_0px_rgba(120,43,203,0.01),0px_15.066px_8.862px_0px_rgba(120,43,203,0.05),0px_6.203px_6.203px_0px_rgba(120,43,203,0.09),0px_1.772px_3.545px_0px_rgba(120,43,203,0.1)] transition-all hover:scale-105">
       <div className="font-['Nunito:Medium',_sans-serif] text-[14.179px] text-neutral-100 whitespace-nowrap">
         Launch great ideas
       </div>
@@ -191,7 +203,11 @@ function LaunchButton() {
   );
 }
 
-export default function ResponsiveRoadmap() {
+interface ResponsiveRoadmapProps {
+  onNavigate?: (page: 'home' | 'about' | 'explore' | 'crowdfunding' | 'success' | 'cancel') => void;
+}
+
+export default function ResponsiveRoadmap({ onNavigate }: ResponsiveRoadmapProps = {}) {
   return (
     <div className="flex flex-col items-center justify-center w-full py-8 lg:py-12">
       {/* Title Section */}
@@ -213,7 +229,7 @@ export default function ResponsiveRoadmap() {
 
       {/* Call to Action Button */}
       <div className="flex justify-center">
-        <LaunchButton />
+        <LaunchButton onNavigate={onNavigate} />
       </div>
     </div>
   );

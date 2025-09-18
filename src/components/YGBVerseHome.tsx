@@ -51,15 +51,27 @@ function Frame5() {
   );
 }
 
-function Button() {
+function Button({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'explore' | 'crowdfunding' | 'success' | 'cancel') => void }) {
   return (
-    <div className="absolute bg-[#782acb] box-border content-stretch flex gap-[8.862px] h-[54px] md:h-[54px] sm:h-[44px] items-center justify-center px-[41.652px] md:px-[41.652px] sm:px-[24px] py-[10.634px] md:py-[10.634px] sm:py-[8px] rounded-[10.634px] shadow-[0px_40.766px_11.521px_0px_rgba(120,43,201,0),0px_26.586px_10.634px_0px_rgba(120,43,201,0.01),0px_15.066px_8.862px_0px_rgba(120,43,201,0.05),0px_6.203px_6.203px_0px_rgba(120,43,201,0.09),0px_1.772px_3.545px_0px_rgba(120,43,201,0.1)] top-[457px] md:top-[457px] sm:top-[300px] translate-x-[-50%] cursor-pointer hover:bg-[#6a259e] transition-colors" data-name="Button" style={{ left: "calc(50% - 1.41px)" }}>
+    <div 
+      onClick={() => {
+        if (onNavigate) {
+          onNavigate('crowdfunding');
+          setTimeout(() => {
+            const pledgeSection = document.getElementById('pledge-section');
+            if (pledgeSection) {
+              pledgeSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 100);
+        }
+      }}
+      className="absolute bg-[#782acb] box-border content-stretch flex gap-[8.862px] h-[54px] md:h-[54px] sm:h-[44px] items-center justify-center px-[41.652px] md:px-[41.652px] sm:px-[24px] py-[10.634px] md:py-[10.634px] sm:py-[8px] rounded-[10.634px] shadow-[0px_40.766px_11.521px_0px_rgba(120,43,201,0),0px_26.586px_10.634px_0px_rgba(120,43,201,0.01),0px_15.066px_8.862px_0px_rgba(120,43,201,0.05),0px_6.203px_6.203px_0px_rgba(120,43,201,0.09),0px_1.772px_3.545px_0px_rgba(120,43,201,0.1)] top-[457px] md:top-[457px] sm:top-[300px] translate-x-[-50%] cursor-pointer hover:bg-[#6a259e] transition-colors" data-name="Button" style={{ left: "calc(50% - 1.41px)" }}>
       <Frame5 />
     </div>
   );
 }
 
-function Frame61559() {
+function Frame61559({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'explore' | 'crowdfunding' | 'success' | 'cancel') => void }) {
   return (
     <div className="h-[514px] md:h-[514px] sm:h-[350px] mb-[-78px] md:mb-[-78px] sm:mb-[-40px] relative shrink-0 w-[499.821px] md:w-[499.821px] sm:w-[300px] z-[1]">
       <div className="absolute size-[470.576px] md:size-[470.576px] sm:size-[280px] translate-x-[-50%] translate-y-[-50%] overflow-hidden rounded-2xl" style={{ top: "calc(50% - 21.712px)", left: "calc(50% - 10.192px)" }}>
@@ -69,16 +81,16 @@ function Frame61559() {
           className="size-full object-cover"
         />
       </div>
-      <Button />
+      <Button onNavigate={onNavigate} />
     </div>
   );
 }
 
-function HeroBanner() {
+function HeroBanner({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'explore' | 'crowdfunding' | 'success' | 'cancel') => void }) {
   return (
     <div className="box-border content-stretch flex flex-col isolate items-center justify-center min-h-screen pb-[78px] md:pb-[78px] sm:pb-[20px] pt-0 md:pt-0 sm:pt-[60px] px-4 md:px-4 sm:px-6 relative shrink-0 w-full gap-0 md:gap-0 sm:gap-6" data-name="Hero Banner">
       <Frame61564 />
-      <Frame61559 />
+      <Frame61559 onNavigate={onNavigate} />
     </div>
   );
 }
@@ -214,11 +226,15 @@ function BulletPoints() {
   );
 }
 
-export function YGBVerseHome() {
+interface YGBVerseHomeProps {
+  onNavigate?: (page: 'home' | 'about' | 'explore' | 'crowdfunding' | 'success' | 'cancel') => void;
+}
+
+export function YGBVerseHome({ onNavigate }: YGBVerseHomeProps = {}) {
   return (
     <div className="relative">
       {/* Hero Section */}
-      <HeroBanner />
+      <HeroBanner onNavigate={onNavigate} />
       
       {/* Why It Matters Section */}
       <div className="py-16 px-4">

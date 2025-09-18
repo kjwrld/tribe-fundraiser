@@ -54,7 +54,7 @@ export default function App() {
         {currentPage === 'explore' && (
           <div style={{ backgroundColor: 'rgba(30, 0, 43, 0.95)' }}>
             <main className="overflow-x-hidden relative">
-              <Explore />
+              <Explore onNavigate={handleNavigation} />
             </main>
           </div>
         )}
@@ -63,7 +63,7 @@ export default function App() {
           <div className="bg-transparent">
             <main className="overflow-x-hidden relative">
               <div className="relative z-10">
-                <YGBVerseHome />
+                <YGBVerseHome onNavigate={handleNavigation} />
               </div>
             </main>
             <Footer />
@@ -76,7 +76,7 @@ export default function App() {
               {/* Hero and WhyRaising sections */}
               <div className="relative">
                 <div className="relative z-10">
-                  <Hero />
+                  <Hero onNavigate={handleNavigation} />
                   <WhyRaising />
                 </div>
               </div>
@@ -89,7 +89,7 @@ export default function App() {
         )}
 
         {currentPage === 'success' && <SuccessPage />}
-        {currentPage === 'cancel' && <CancelPage />}
+        {currentPage === 'cancel' && <CancelPage onNavigate={handleNavigation} />}
       </div>
     </div>
     </StripeProvider>

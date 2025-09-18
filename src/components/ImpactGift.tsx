@@ -3,6 +3,14 @@ import Slider from "react-slick";
 import { useState, useRef, useCallback } from "react";
 import { DonationCheckout } from "./DonationCheckout";
 
+// Stripe Product IDs
+const STRIPE_PRODUCTS = {
+  ONE_TIME_GIFT: 'prod_T4fZSmo5mQHFDc',
+  YGBER_120_STUDENTS: 'prod_T4fXCFGEOwW0W0',
+  STEAMER_90_STUDENTS: 'prod_T4fVODlCoYgRTd',
+  EXPLORER_30_STUDENTS: 'prod_T4fRnvkp4ItOxN'
+};
+
 export function ImpactGift() {
     // State for mobile drag-to-increment interaction
     const [dragValue, setDragValue] = useState(25);
@@ -20,8 +28,8 @@ export function ImpactGift() {
         }
     });
 
-    // Handler for tier subscription buttons
-    const handleTierSubscription = async (tierAmount: number, tierName: string) => {
+    // Handler for tier subscription buttons  
+    const handleTierSubscription = async (tierName: string, productId: string) => {
         try {
             const response = await fetch(`/api/create-checkout-session`, {
                 method: 'POST',
@@ -29,14 +37,13 @@ export function ImpactGift() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    amount: tierAmount,
-                    description: `YGBVerse ${tierName} Annual Subscription`,
-                    isRecurring: true
+                    productId: productId
                 }),
             });
 
             if (!response.ok) {
-                throw new Error('Failed to create checkout session');
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Failed to create checkout session');
             }
 
             const { url } = await response.json();
@@ -46,7 +53,7 @@ export function ImpactGift() {
             }
         } catch (error) {
             console.error('Subscription error:', error);
-            alert('Failed to process subscription. Please try again.');
+            alert(`Failed to process subscription: ${error.message}`);
         }
     };
     const [isDragging, setIsDragging] = useState(false);
@@ -164,6 +171,7 @@ export function ImpactGift() {
             nameColor: "text-[#8c92ab]",
             price: "$200",
             amount: 200,
+            productId: STRIPE_PRODUCTS.EXPLORER_30_STUDENTS,
             period: "/ billed annually",
             benefits: [
                 "Gift access to 1 classes (30 students)",
@@ -184,6 +192,7 @@ export function ImpactGift() {
             nameColor: "text-[#8614ff]",
             price: "$600",
             amount: 600,
+            productId: STRIPE_PRODUCTS.STEAMER_90_STUDENTS,
             period: "/ billed annually",
             benefits: [
                 "Gift access to 3 classes (90 students)",
@@ -207,6 +216,7 @@ export function ImpactGift() {
             nameColor: "text-[#8c92ab]",
             price: "$1000",
             amount: 1000,
+            productId: STRIPE_PRODUCTS.YGBER_120_STUDENTS,
             period: "/ billed annually",
             benefits: [
                 "Gift access to 5 classes (120 students)",
@@ -230,7 +240,7 @@ export function ImpactGift() {
     ];
 
     return (
-        <section className="bg-gradient-to-b from-purple-50/10 to-white/70 py-20 lg:py-32">
+        <section id="pledge-section" className="bg-gradient-to-b from-purple-50/10 to-white/70 py-20 lg:py-32">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col gap-[80px] items-center justify-start">
                     {/* Title Section */}
@@ -375,7 +385,7 @@ export function ImpactGift() {
 
                                                             {/* CTA Button */}
                                                             <button
-                                                                onClick={() => handleTierSubscription(tier.amount, tier.name)}
+                                                                onClick={() => handleTierSubscription(tier.name, tier.productId)}
                                                                 className={`box-border content-stretch flex gap-2.5 h-[55px] sm:h-[65px] items-center justify-center px-[40px] sm:px-[68px] py-[15px] relative rounded-[12px] shrink-0 w-full hover:scale-105 transition-all duration-200 ${tier.buttonStyle}`}
                                                             >
                                                                 <div className="content-stretch flex gap-[25px] items-center justify-center relative shrink-0">
@@ -502,7 +512,7 @@ export function ImpactGift() {
 
                                                 {/* CTA Button */}
                                                 <button
-                                                    onClick={() => handleTierSubscription(tier.amount, tier.name)}
+                                                    onClick={() => handleTierSubscription(tier.name, tier.productId)}
                                                     className={`box-border content-stretch flex gap-2.5 h-[60px] items-center justify-center px-[40px] py-[15px] relative rounded-[12px] shrink-0 w-full hover:scale-105 transition-all duration-200 ${tier.buttonStyle}`}
                                                 >
                                                     <div className="content-stretch flex gap-[25px] items-center justify-center relative shrink-0">

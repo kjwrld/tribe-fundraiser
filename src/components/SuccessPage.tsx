@@ -1,4 +1,41 @@
+import { useEffect, useState } from 'react';
+
 export function SuccessPage() {
+  const [verificationStatus, setVerificationStatus] = useState<'loading' | 'success' | 'error'>('loading');
+
+  useEffect(() => {
+    // Get session_id from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const sessionId = urlParams.get('session_id');
+    
+    if (sessionId) {
+      // Verify payment and add to Mailchimp
+      fetch('/api/verify-payment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ session_id: sessionId }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          console.log('Payment verified and user added to Mailchimp:', data);
+          setVerificationStatus('success');
+        } else {
+          console.error('Payment verification failed:', data);
+          setVerificationStatus('error');
+        }
+      })
+      .catch(error => {
+        console.error('Error verifying payment:', error);
+        setVerificationStatus('error');
+      });
+    } else {
+      setVerificationStatus('error');
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50/30 via-white to-blue-50/20 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-lg w-full text-center">

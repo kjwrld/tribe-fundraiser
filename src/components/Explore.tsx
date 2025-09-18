@@ -5,7 +5,11 @@ import Certifications from "../imports/Certifications";
 import ResponsiveRoadmap from "./ResponsiveRoadmap";
 import Footer from "../imports/Footer-38-272";
 
-export function Explore() {
+interface ExploreProps {
+  onNavigate?: (page: 'home' | 'about' | 'explore' | 'crowdfunding' | 'success' | 'cancel') => void;
+}
+
+export function Explore({ onNavigate }: ExploreProps = {}) {
   return (
     <div className="w-full overflow-x-hidden relative" style={{ backgroundColor: '#1E002B' }}>
       {/* Hero Section */}
@@ -30,7 +34,7 @@ export function Explore() {
 
       {/* Roadmap Section */}
       <section className="w-full relative z-10 mt-16 sm:mt-20 lg:mt-24 max-w-6xl mx-auto px-4 lg:px-8">
-        <ResponsiveRoadmap />
+        <ResponsiveRoadmap onNavigate={onNavigate} />
       </section>
 
       {/* Footer Section */}

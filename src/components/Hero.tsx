@@ -26,7 +26,11 @@ function InterfaceLightning() {
     );
 }
 
-export function Hero() {
+interface HeroProps {
+  onNavigate?: (page: 'home' | 'about' | 'explore' | 'crowdfunding' | 'success' | 'cancel') => void;
+}
+
+export function Hero({ onNavigate }: HeroProps = {}) {
     return (
         <section className="relative w-full">
             <div className="flex flex-col items-center justify-center py-12 lg:py-20">
@@ -60,7 +64,19 @@ export function Hero() {
                             </div>
 
                             {/* CTA Button */}
-                            <button className="relative bg-gradient-to-r from-[#782acb] to-[#9333ea] hover:from-[#6b25b5] hover:to-[#7c3aed] box-border content-stretch flex gap-[8.862px] h-[54px] items-center justify-center px-[41.652px] py-[10.634px] rounded-[10.634px] shadow-[0px_20px_25px_-5px_rgba(120,43,201,0.4),0px_10px_10px_-5px_rgba(120,43,201,0.04)] hover:shadow-[0px_25px_50px_-12px_rgba(120,43,201,0.6),0px_0px_0px_1px_rgba(160,71,255,0.3)] hover:scale-110 active:scale-105 shrink-0 transition-all duration-300 ease-out overflow-hidden group animate-pulse-glow">
+                            <button 
+                                onClick={() => {
+                                    if (onNavigate) {
+                                        onNavigate('crowdfunding');
+                                        setTimeout(() => {
+                                            const pledgeSection = document.getElementById('pledge-section');
+                                            if (pledgeSection) {
+                                                pledgeSection.scrollIntoView({ behavior: 'smooth' });
+                                            }
+                                        }, 100);
+                                    }
+                                }}
+                                className="relative bg-gradient-to-r from-[#782acb] to-[#9333ea] hover:from-[#6b25b5] hover:to-[#7c3aed] box-border content-stretch flex gap-[8.862px] h-[54px] items-center justify-center px-[41.652px] py-[10.634px] rounded-[10.634px] shadow-[0px_20px_25px_-5px_rgba(120,43,201,0.4),0px_10px_10px_-5px_rgba(120,43,201,0.04)] hover:shadow-[0px_25px_50px_-12px_rgba(120,43,201,0.6),0px_0px_0px_1px_rgba(160,71,255,0.3)] hover:scale-110 active:scale-105 shrink-0 transition-all duration-300 ease-out overflow-hidden group animate-pulse-glow">
                                 <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
                                 <div className="box-border content-stretch flex gap-3 items-center justify-start px-0 py-[13.293px] relative rounded-[10.634px] shrink-0 z-10">
                                     <div className="font-['Nunito:Medium',_sans-serif] font-medium leading-[0] relative shrink-0 text-[14.179px] text-neutral-100 text-nowrap transition-all duration-300">
