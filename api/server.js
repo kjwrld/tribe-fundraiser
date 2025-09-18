@@ -251,6 +251,87 @@ app.post('/api/verify-payment', async (req, res) => {
   }
 });
 
+// Test endpoint for Mailchimp integration
+app.post('/api/test-mailchimp', async (req, res) => {
+  try {
+    console.log('Testing Mailchimp integration with mock data...');
+    
+    // Mock data that would typically come from Stripe checkout
+    const mockData = [
+      {
+        email: 'test.explorer@example.com',
+        firstName: 'John',
+        lastName: 'Doe',
+        donationAmount: 200,
+        tier: 'Explorer'
+      },
+      {
+        email: 'test.steamer@example.com', 
+        firstName: 'Jane',
+        lastName: 'Smith',
+        donationAmount: 600,
+        tier: 'Steamer'
+      },
+      {
+        email: 'test.ygber@example.com',
+        firstName: 'Bob',
+        lastName: 'Johnson',
+        donationAmount: 1000,
+        tier: 'YGBer'
+      },
+      {
+        email: 'test.onetime@example.com',
+        firstName: 'Alice',
+        lastName: 'Wilson',
+        donationAmount: 75,
+        tier: 'One-Time Gift'
+      }
+    ];
+
+    const results = [];
+    
+    for (const data of mockData) {
+      console.log(`Testing Mailchimp for ${data.email} - ${data.tier} ($${data.donationAmount})`);
+      
+      const result = await addDonorToMailchimp(
+        data.email,
+        data.firstName,
+        data.lastName,
+        data.donationAmount
+      );
+      
+      results.push({
+        email: data.email,
+        tier: data.tier,
+        amount: data.donationAmount,
+        success: result !== null,
+        result: result
+      });
+    }
+    
+    res.json({
+      success: true,
+      message: 'Mailchimp test completed',
+      results: results,
+      mailchimp_config: {
+        audience_id: process.env.MAILCHIMP_AUDIENCE_ID,
+        api_key_server: process.env.MAILCHIMP_API_KEY?.split('-')[1] || 'unknown'
+      }
+    });
+    
+  } catch (error) {
+    console.error('Mailchimp test error:', error);
+    res.status(500).json({ 
+      success: false, 
+      error: error.message,
+      mailchimp_config: {
+        audience_id: process.env.MAILCHIMP_AUDIENCE_ID,
+        api_key_server: process.env.MAILCHIMP_API_KEY?.split('-')[1] || 'unknown'
+      }
+    });
+  }
+});
+
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

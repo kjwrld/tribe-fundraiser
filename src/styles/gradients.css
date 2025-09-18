@@ -10,6 +10,7 @@
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+    filter: saturate(1.5);
 }
 
 .green {
