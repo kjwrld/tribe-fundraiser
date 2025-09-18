@@ -15,13 +15,16 @@ const STRIPE_PRODUCTS = {
   EXPLORER_30_STUDENTS: 'prod_T4fRnvkp4ItOxN'
 };
 
-// Hardcoded Price IDs to avoid API lookup overhead
-const STRIPE_PRICES = {
-  'prod_T4fZSmo5mQHFDc': 'price_1S8WDvKx6GpDBkqt7q2QstNW', // One-Time Gift
-  'prod_T4fXCFGEOwW0W0': 'price_1S8WCWKx6GpDBkqtupogrhwy', // YGBer ~ 120 Students - $1000/year
-  'prod_T4fVODlCoYgRTd': 'price_1S8WAiKx6GpDBkqtheiYWB1K', // Steamer ~ 90 Students - $600/year
-  'prod_T4fRnvkp4ItOxN': 'price_1S8W6sKx6GpDBkqtwjILpF1h'  // Explorer ~ 30 Students - $200/year
-};
+// Product pricing (in cents)
+function getProductAmount(productId) {
+  const pricing = {
+    'prod_T4fZSmo5mQHFDc': 0,      // One-Time Gift - $0
+    'prod_T4fXCFGEOwW0W0': 100000, // YGBer ~ 120 Students - $1000/year
+    'prod_T4fVODlCoYgRTd': 60000,  // Steamer ~ 90 Students - $600/year
+    'prod_T4fRnvkp4ItOxN': 20000   // Explorer ~ 30 Students - $200/year
+  };
+  return pricing[productId] || 0;
+}
 
 // Configure Mailchimp
 mailchimp.setConfig({
@@ -108,21 +111,20 @@ app.post('/api/create-checkout-session', async (req, res) => {
     };
 
     if (productId) {
-      // Use hardcoded price ID to avoid API lookup overhead
-      const priceId = STRIPE_PRICES[productId];
-      
-      if (!priceId) {
-        console.error(`No price ID found for product ${productId}`);
-        return res.status(400).json({ error: `No price ID found for product ${productId}` });
-      }
-
-      console.log(`Using hardcoded price ${priceId} for product ${productId}`);
+      console.log(`Creating checkout for product ${productId}`);
 
       sessionConfig = {
         ...sessionConfig,
         mode: 'subscription',
         line_items: [{
-          price: priceId,
+          price_data: {
+            currency: 'usd',
+            product: productId,
+            recurring: {
+              interval: 'year',
+            },
+            unit_amount: getProductAmount(productId),
+          },
           quantity: 1,
         }],
       };
