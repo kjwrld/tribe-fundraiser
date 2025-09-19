@@ -4,43 +4,86 @@ import Educators from "../imports/Educators";
 import Certifications from "../imports/Certifications";
 import ResponsiveRoadmap from "./ResponsiveRoadmap";
 import Footer from "../imports/Footer-38-272";
+import { ExploreLeftNav } from "./ExploreLeftNav";
 
 interface ExploreProps {
   onNavigate?: (page: 'home' | 'about' | 'explore' | 'crowdfunding' | 'success' | 'cancel') => void;
 }
 
+const sections = [
+  { id: 'hero-section', label: 'HERO', number: '001' },
+  { id: 'families-section', label: 'FAMILIES', number: '002' },
+  { id: 'educators-section', label: 'EDUCATORS', number: '003' },
+  { id: 'certifications-section', label: 'CERTIFICATIONS', number: '004' },
+  { id: 'roadmap-section', label: 'ROADMAP', number: '005' },
+  { id: 'footer-section', label: 'CONTACT', number: '006' },
+];
+
 export function Explore({ onNavigate }: ExploreProps = {}) {
   return (
     <div className="w-full overflow-x-hidden relative" style={{ backgroundColor: '#1E002B' }}>
+      {/* Desktop Left Navigation - Hidden on mobile */}
+      <ExploreLeftNav sections={sections} />
+      
       {/* Hero Section */}
-      <main className="w-full relative z-20">
-        <Hero />
-      </main>
+      <section 
+        id="hero-section" 
+        className="min-h-screen w-full relative z-20 flex items-center justify-center"
+      >
+        <div className="w-full">
+          <Hero />
+        </div>
+      </section>
         
       {/* Families Section */}
-      <section className="w-full relative z-10 mt-28 sm:mt-32 lg:mt-28 max-w-6xl mx-auto px-4 lg:px-8">
-        <Families />
+      <section 
+        id="families-section"
+        className="min-h-screen w-full relative z-10 flex items-center justify-center"
+      >
+        <div className="max-w-6xl mx-auto px-4 lg:px-8 py-20">
+          <Families />
+        </div>
       </section>
 
       {/* Educators Section */}
-      <section className="w-full relative z-10 mt-20 sm:mt-24 lg:mt-20 max-w-6xl mx-auto px-4 lg:px-8">
-        <Educators />
+      <section 
+        id="educators-section"
+        className="min-h-screen w-full relative z-10 flex items-center justify-center"
+      >
+        <div className="max-w-6xl mx-auto px-4 lg:px-8 py-20">
+          <Educators />
+        </div>
       </section>
 
       {/* Certifications Section */}
-      <section className="w-full relative z-10 mt-8 sm:mt-12 lg:mt-8 max-w-6xl mx-auto px-4 lg:px-8">
-        <Certifications />
+      <section 
+        id="certifications-section"
+        className="min-h-screen w-full relative z-10 flex items-center justify-center"
+      >
+        <div className="max-w-6xl mx-auto px-4 lg:px-8 py-20">
+          <Certifications />
+        </div>
       </section>
 
       {/* Roadmap Section */}
-      <section className="w-full relative z-10 mt-16 sm:mt-20 lg:mt-24 max-w-6xl mx-auto px-4 lg:px-8">
-        <ResponsiveRoadmap onNavigate={onNavigate} />
+      <section 
+        id="roadmap-section"
+        className="min-h-screen w-full relative z-10 flex items-center justify-center"
+      >
+        <div className="max-w-6xl mx-auto px-4 lg:px-8 py-20">
+          <ResponsiveRoadmap onNavigate={onNavigate} />
+        </div>
       </section>
 
       {/* Footer Section */}
-      <footer className="w-full relative z-10 mt-16 sm:mt-20 lg:mt-24">
-        <Footer />
-      </footer>
+      <section 
+        id="footer-section"
+        className="min-h-screen w-full relative z-10 flex items-end justify-center"
+      >
+        <div className="w-full">
+          <Footer />
+        </div>
+      </section>
     </div>
   );
 }
