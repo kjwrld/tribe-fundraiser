@@ -33,7 +33,7 @@ interface HeroProps {
 export function Hero({ onNavigate }: HeroProps = {}) {
     return (
         <section className="relative w-full">
-            <div className="flex flex-col items-center justify-center py-12 lg:py-20">
+            <div className="flex flex-col items-center justify-center pt-32 lg:pt-40 pb-12 lg:pb-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-col gap-12 lg:gap-[45px] items-center justify-center text-center">
                         {/* Hero Content */}

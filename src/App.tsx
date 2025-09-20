@@ -55,19 +55,11 @@ export default function App() {
         {/* Shared Gradient Background for all pages */}
         <GradientBackground currentPage={currentPage} />
         
-        {/* Page Content */}
-        <div className="relative z-10">
-          <ResponsiveNav onNavigate={handleNavigation} currentPage={currentPage} />
+        {/* Sticky Navigation - Outside all page content */}
+        <ResponsiveNav onNavigate={handleNavigation} currentPage={currentPage} />
         
-        {currentPage === 'about' && (
-          <div className="bg-white/90">
-            <main className="overflow-x-hidden relative">
-              <About />
-            </main>
-            <Footer />
-          </div>
-        )}
-
+        {/* Page Content - Add padding-top to account for fixed nav */}
+        <div className="relative z-10 pt-20">
         {currentPage === 'explore' && (
           <div style={{ backgroundColor: 'rgba(30, 0, 43, 0.95)' }}>
             <main className="overflow-x-hidden relative">
@@ -82,6 +74,16 @@ export default function App() {
               <div className="relative z-10">
                 <YGBVerseHome onNavigate={handleNavigation} />
               </div>
+            </main>
+            <Footer />
+          </div>
+        )}
+        </div>
+
+        {currentPage === 'about' && (
+          <div className="bg-white/90">
+            <main className="overflow-x-hidden relative">
+              <About />
             </main>
             <Footer />
           </div>
@@ -108,7 +110,6 @@ export default function App() {
         {currentPage === 'success' && <SuccessPage />}
         {currentPage === 'cancel' && <CancelPage onNavigate={handleNavigation} />}
       </div>
-    </div>
     </StripeProvider>
   );
 }

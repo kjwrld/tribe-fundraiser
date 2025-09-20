@@ -212,7 +212,7 @@ export default function ResponsiveRoadmap({ onNavigate }: ResponsiveRoadmapProps
     <div className="flex flex-col items-center justify-center w-full py-8 lg:py-12">
       {/* Title Section */}
       <div className="flex flex-col gap-2 items-center justify-start mb-8 lg:mb-12 text-center max-w-2xl mx-auto px-4">
-        <div className="font-['Nunito:Bold',_sans-serif] text-[28px] sm:text-[34px] text-center tracking-[0.84px] sm:tracking-[1.02px] leading-[34px] sm:leading-[41px]">
+        <div className="font-['Nunito:Bold',_sans-serif] text-[28px] sm:text-[36px] md:text-[48px] lg:text-[59.044px] xl:text-[64px] font-bold leading-[28px] sm:leading-[36px] md:leading-[48px] lg:leading-[59.044px] xl:leading-[64px] text-center">
           <span className="text-[#a047ff]">Coming </span>
           <span className="text-[#d5adff]">Soon</span>
         </div>

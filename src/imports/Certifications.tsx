@@ -18,7 +18,7 @@ export default function Certifications() {
                 className="w-full h-full object-contain rounded saturate-[0.25]"
               />
             </div>
-            <p className="hidden sm:block font-['Nunito:Regular',_sans-serif] text-[#a047ff] text-[12px] sm:text-[10px] lg:text-[12px] text-center leading-relaxed max-w-28">
+            <p className="hidden sm:block font-['Nunito:Regular',_sans-serif] text-[#efe0ff] text-[12px] sm:text-[10px] lg:text-[12px] text-center leading-relaxed max-w-28">
               NGSS-aligned learning challenges.
             </p>
           </div>
@@ -32,7 +32,7 @@ export default function Certifications() {
                 className="w-full h-full object-contain rounded saturate-0"
               />
             </div>
-            <p className="hidden sm:block font-['Nunito:Regular',_sans-serif] text-[#a047ff] text-[12px] sm:text-[10px] lg:text-[12px] text-center leading-relaxed max-w-32">
+            <p className="hidden sm:block font-['Nunito:Regular',_sans-serif] text-[#efe0ff] text-[12px] sm:text-[10px] lg:text-[12px] text-center leading-relaxed max-w-32">
               Children's Online Privacy Protection Rule
             </p>
           </div>
@@ -46,7 +46,7 @@ export default function Certifications() {
                 className="w-full h-full object-contain rounded saturate-0"
               />
             </div>
-            <p className="hidden sm:block font-['Nunito:Regular',_sans-serif] text-[#a047ff] text-[12px] sm:text-[10px] lg:text-[12px] text-center leading-relaxed max-w-28">
+            <p className="hidden sm:block font-['Nunito:Regular',_sans-serif] text-[#efe0ff] text-[12px] sm:text-[10px] lg:text-[12px] text-center leading-relaxed max-w-28">
               National Board of Certified Teachers
             </p>
           </div>

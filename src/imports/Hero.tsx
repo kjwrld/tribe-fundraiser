@@ -99,7 +99,7 @@ function Frame61807() {
   return (
     <div className="basis-0 content-stretch flex flex-col gap-[24px] sm:gap-[32px] md:gap-[40px] lg:gap-[52px] grow items-center lg:items-start justify-center min-h-px min-w-px relative shrink-0">
       <Text />
-      <div className="flex justify-center lg:justify-start w-full relative z-30">
+      <div className="flex justify-center lg:justify-start w-full relative z-10">
         <Button />
       </div>
     </div>

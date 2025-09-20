@@ -8,7 +8,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 
 function Frame61564() {
   return (
-    <div className="h-[139px] md:h-[139px] sm:h-auto mb-[-78px] md:mb-[-78px] sm:mb-[-20px] relative shrink-0 w-full z-[2] px-4 md:px-0">
+    <div className="h-[139px] md:h-[139px] sm:h-auto mb-[-78px] md:mb-[-78px] sm:mb-[-20px] relative shrink-0 w-full px-4 md:px-0">
       <div className="absolute md:absolute sm:static md:left-1/2 md:transform md:-translate-x-1/2 font-['Nunito:Regular',_sans-serif] font-normal h-[139px] md:h-[139px] sm:h-auto text-center top-0 md:top-0 sm:top-auto w-[693.77px] md:w-[693.77px] sm:w-full max-w-full flex flex-col sm:gap-4">
         {/* Title */}
         <div className="leading-[0] text-[#d5adff] text-[59.044px] md:text-[59.044px] sm:text-[28px]">
@@ -73,7 +73,7 @@ function Button({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'explor
 
 function Frame61559({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'explore' | 'crowdfunding' | 'success' | 'cancel') => void }) {
   return (
-    <div className="h-[514px] md:h-[514px] sm:h-[350px] mb-[-78px] md:mb-[-78px] sm:mb-[-40px] relative shrink-0 w-[499.821px] md:w-[499.821px] sm:w-[300px] z-[1]">
+    <div className="h-[514px] md:h-[514px] sm:h-[350px] mb-[-78px] md:mb-[-78px] sm:mb-[-40px] relative shrink-0 w-[499.821px] md:w-[499.821px] sm:w-[300px]">
       <div className="absolute size-[470.576px] md:size-[470.576px] sm:size-[280px] translate-x-[-50%] translate-y-[-50%] overflow-hidden rounded-2xl" style={{ top: "calc(50% - 21.712px)", left: "calc(50% - 10.192px)" }}>
         <img 
           src={heroImage} 

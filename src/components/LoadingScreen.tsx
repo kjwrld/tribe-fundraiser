@@ -44,7 +44,7 @@ export function LoadingScreen({ onLoadingComplete, maxDuration = 2500 }: Loading
 
   return (
     <div 
-      className={`fixed inset-0 z-[9999] bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-800 flex items-center justify-center transition-opacity duration-300 ${
+      className={`fixed inset-0 z-[50000] bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-800 flex items-center justify-center transition-opacity duration-300 ${
         progress >= 100 ? 'opacity-0' : 'opacity-100'
       }`}
     >

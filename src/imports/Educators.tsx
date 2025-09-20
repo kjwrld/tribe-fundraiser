@@ -6,7 +6,7 @@ export default function Educators() {
     <div className="w-full flex flex-col items-center gap-8 lg:gap-12 py-8 lg:py-12" data-name="educators">
       {/* Title Section */}
       <div className="flex flex-col items-center gap-4 text-center">
-        <h2 className="font-['Nunito:Bold',_sans-serif] text-[#d5adff] text-[24px] sm:text-[28px] lg:text-[32px] font-bold leading-tight">
+        <h2 className="font-['Nunito:Bold',_sans-serif] text-[#d5adff] text-[28px] sm:text-[36px] md:text-[48px] lg:text-[59.044px] xl:text-[64px] font-bold leading-[28px] sm:leading-[36px] md:leading-[48px] lg:leading-[59.044px] xl:leading-[64px]">
           For Educators
         </h2>
         <p className="font-['Nunito:Regular',_sans-serif] text-[#efe0ff] text-[16px] sm:text-[18px] leading-relaxed max-w-md">
