@@ -1,5 +1,6 @@
 import svgPaths from "./svg-2ljn3lk1ls";
 import imgFrame61559 from "../assets/webp/ce3be992f9705c8a009f4cf21949a94686798352.webp";
+import { R3FRocketModel } from "../components/R3FRocketModel";
 
 function Title() {
   return (
@@ -109,11 +110,19 @@ function Frame61807() {
 function Frame61559() {
   return (
     <div className="flex items-center justify-center lg:justify-end h-[250px] sm:h-[300px] md:h-[350px] lg:h-[600px] xl:h-[721px] shrink-0 w-full sm:w-[350px] md:w-[400px] lg:w-[600px] xl:w-[730px]">
-      <img 
-        src={imgFrame61559} 
-        alt="YGB Rocket" 
-        className="max-w-full max-h-full object-contain lg:-mr-12 xl:mr-[-120px] rounded-[0px] mt-[0px] mb-[0px] ml-[0px] sm:py-[12px] md:py-[16px] lg:py-[24px] mr-[-42px] px-[0px] py-[24px]"
-      />
+      {/* Mobile: Use original image */}
+      <div className="md:hidden w-full h-full">
+        <img 
+          src={imgFrame61559} 
+          alt="YGB Rocket" 
+          className="max-w-full max-h-full object-contain rounded-[0px] mt-[0px] mb-[0px] ml-[0px] sm:py-[12px] mr-[-42px] px-[0px] py-[24px]"
+        />
+      </div>
+      
+      {/* Desktop/Tablet: Use React Three Fiber 3D model */}
+      <div className="hidden md:block w-full h-full lg:-mr-12 xl:mr-[-120px]">
+        <R3FRocketModel className="w-full h-full" />
+      </div>
     </div>
   );
 }
