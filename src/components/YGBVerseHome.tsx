@@ -5,6 +5,7 @@ import heroImage from "../assets/webp/ce3be992f9705c8a009f4cf21949a94686798352.w
 import { motion, useInView } from 'motion/react';
 import { useRef, useState, useEffect } from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
+import { R3FRocketModel } from "./R3FRocketModel";
 
 function Frame61564() {
   return (
@@ -72,15 +73,37 @@ function Button({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'explor
 }
 
 function Frame61559({ onNavigate }: { onNavigate?: (page: 'home' | 'about' | 'explore' | 'crowdfunding' | 'success' | 'cancel') => void }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <div className="h-[514px] md:h-[514px] sm:h-[350px] mb-[-78px] md:mb-[-78px] sm:mb-[-40px] relative shrink-0 w-[499.821px] md:w-[499.821px] sm:w-[300px]">
-      <div className="absolute size-[470.576px] md:size-[470.576px] sm:size-[280px] translate-x-[-50%] translate-y-[-50%] overflow-hidden rounded-2xl" style={{ top: "calc(50% - 21.712px)", left: "calc(50% - 10.192px)" }}>
-        <img 
-          src={heroImage} 
-          alt="YGBVerse hero" 
-          className="size-full object-cover"
-        />
-      </div>
+      {isMobile ? (
+        /* Mobile: Use original image */
+        <div className="absolute size-[470.576px] translate-x-[-50%] translate-y-[-50%] overflow-hidden rounded-2xl" style={{ top: "calc(50% - 21.712px)", left: "calc(50% - 10.192px)" }}>
+          <img 
+            src={heroImage} 
+            alt="YGBVerse hero" 
+            className="size-full object-cover"
+          />
+        </div>
+      ) : (
+        /* Desktop/Tablet: Use 3D model */
+        <div className="absolute size-[470.576px] md:size-[470.576px] sm:size-[280px] translate-x-[-50%] translate-y-[-50%]" style={{ top: "calc(50% - 21.712px)", left: "calc(50% - 10.192px)" }}>
+          <R3FRocketModel className="w-full h-full" />
+        </div>
+      )}
+      
       <Button onNavigate={onNavigate} />
     </div>
   );

@@ -1,6 +1,7 @@
 import svgPaths from "./svg-2ljn3lk1ls";
 import imgFrame61559 from "../assets/webp/ce3be992f9705c8a009f4cf21949a94686798352.webp";
 import { R3FRocketModel } from "../components/R3FRocketModel";
+import { useState, useEffect } from 'react';
 
 function Title() {
   return (
@@ -108,21 +109,36 @@ function Frame61807() {
 }
 
 function Frame61559() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
-    <div className="flex items-center justify-center lg:justify-end h-[250px] sm:h-[300px] md:h-[350px] lg:h-[600px] xl:h-[721px] shrink-0 w-full sm:w-[350px] md:w-[400px] lg:w-[600px] xl:w-[730px]">
-      {/* Mobile: Use original image */}
-      <div className="md:hidden w-full h-full">
-        <img 
-          src={imgFrame61559} 
-          alt="YGB Rocket" 
-          className="max-w-full max-h-full object-contain rounded-[0px] mt-[0px] mb-[0px] ml-[0px] sm:py-[12px] mr-[-42px] px-[0px] py-[24px]"
-        />
-      </div>
-      
-      {/* Desktop/Tablet: Use React Three Fiber 3D model */}
-      <div className="hidden md:block w-full h-full lg:-mr-12 xl:mr-[-120px]">
-        <R3FRocketModel className="w-full h-full" />
-      </div>
+    <div className="flex items-center justify-center lg:justify-end h-[250px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[721px] shrink-0 w-full sm:w-[450px] md:w-[550px] lg:w-[600px] xl:w-[730px]">
+      {isMobile ? (
+        /* Mobile: Use original image */
+        <div className="w-full h-full">
+          <img 
+            src={imgFrame61559} 
+            alt="YGB Rocket" 
+            className="max-w-full max-h-full object-contain rounded-[0px] mt-[0px] mb-[0px] ml-[0px] px-[0px] py-[24px]"
+          />
+        </div>
+      ) : (
+        /* Desktop/Tablet: Use 3D model */
+        <div className="w-full h-full lg:-mr-12 xl:mr-[-120px]">
+          <R3FRocketModel className="w-full h-full" />
+        </div>
+      )}
     </div>
   );
 }
@@ -132,8 +148,8 @@ export default function Hero() {
     <div className="relative w-full" data-name="Hero">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col items-center justify-center relative px-[0px] p-[0px] m-[0px]">
-          {/* Mobile layout: Stack rocket above text */}
-          <div className="lg:hidden box-border content-stretch flex flex-col items-center justify-start px-4 sm:px-6 md:px-8 pt-4 pb-12 sm:pb-16 md:pb-20 relative w-full">
+          {/* Mobile/Tablet layout: Stack rocket above text */}
+          <div className="lg:hidden box-border content-stretch flex flex-col items-center justify-start px-4 sm:px-6 md:px-8 pt-4 pb-20 sm:pb-24 md:pb-28 relative w-full h-[75vh]">
             <Frame61559 />
             <Frame61807 />
           </div>
